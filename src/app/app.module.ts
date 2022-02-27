@@ -7,6 +7,8 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+export const baseUrl = 'https://reqres.in/api ' as const;
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,9 +24,7 @@ import { AppComponent } from './app.component';
   providers: [
     {
       provide: NG_ENTITY_SERVICE_CONFIG,
-      useValue: {
-        baseUrl: 'https://jsonplaceholder.typicode.com'
-      }
+      useValue: { baseUrl }
     }
   ],
   bootstrap: [AppComponent]

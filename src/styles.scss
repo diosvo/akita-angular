@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+body {
+  font : normal 0.8125rem/1.25rem "Manrope", -apple-system;
+  color: #1B1F3B;
+
+  min-height: 100%;
+
+  text-rendering         : optimizeLegibility;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
