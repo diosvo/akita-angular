@@ -27,5 +27,6 @@ export class AuthService {
 
   logout(): void {
     this.store.reset();
+    localStorage.removeItem('akita')
   }
 }
