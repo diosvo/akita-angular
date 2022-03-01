@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,23 @@ export class LoginComponent {
     password: ['', [Validators.required]],
   })
 
-  constructor(private readonly fb: FormBuilder) { }
+  constructor(
+    private readonly router: Router,
+    private readonly fb: FormBuilder,
+    private readonly auth: AuthService
+  ) { }
 
+  onSubmit(): void {
+    if (this.form.invalid) {
+      return
+    }
+
+    this.auth.login(this.form.value).subscribe({
+      next: () => {
+        alert('Welcome');
+        this.router.navigateByUrl('')
+      },
+      error: ({ message }) => this.error$.next(message)
+    })
+  }
 }

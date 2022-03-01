@@ -4,7 +4,9 @@
   <input type="email" formControlName="email" autocomplete="off" />
   <input type="password" formControlName="password" />
 
-  <button type="submit" [disabled]="form.invalid">Submit</button>
+  <button type="submit" [disabled]="form.invalid" (click)="onSubmit()">
+    Submit
+  </button>
 
   <div class="error-message" *ngIf="error$ | async as message">
     {{ message }}

@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
@@ -7,7 +8,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-export const baseUrl = 'https://reqres.in/api ' as const;
+export const baseUrl = 'https://reqres.in/api' as const;
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ export const baseUrl = 'https://reqres.in/api ' as const;
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AkitaNgRouterStoreModule,
     environment.production
       ? []
