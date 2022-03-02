@@ -1,7 +1,7 @@
 <h2>Login</h2>
 
 <form [formGroup]="form">
-  <input type="email" formControlName="email" autocomplete="off" />
+  <input type="email" formControlName="username" autocomplete="off" />
   <input type="password" formControlName="password" />
 
   <button type="submit" [disabled]="form.invalid" (click)="onSubmit()">

@@ -1,13 +1,13 @@
 export interface AuthState {
   token: string;
-  email: string;
+  username: string;
   password: string;
 }
 
 export function createInitialState(): AuthState {
   return {
     token: '',
-    email: '',
+    username: '',
     password: ''
   }
 }

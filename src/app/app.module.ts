@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-export const baseUrl = 'https://reqres.in/api' as const;
+export const baseUrl = environment.URL;
 
 @NgModule({
   declarations: [

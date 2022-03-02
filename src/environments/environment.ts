@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL: 'https://reqres.in/api'
+  URL: 'https://fakestoreapi.com'
 };
 
 /*

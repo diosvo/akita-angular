@@ -16,9 +16,9 @@ export class AuthService {
   ) { }
 
   login(credential: AuthState): Observable<AuthState> {
-    return this.http.post<AuthState>(`${baseUrl}/login`, credential).pipe(
+    return this.http.post<AuthState>(`${baseUrl}/auth/login`, credential).pipe(
       tap(({ token }) => this.store.update({
-        email: credential.email,
+        username: credential.username,
         password: credential.password,
         token
       }))
