@@ -14,8 +14,8 @@ export class LoginComponent {
   error$ = new Subject<string>();
 
   form: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    email: ['eve.holt@reqres.in', [Validators.required, Validators.email]],
+    password: ['cityslicka', [Validators.required]],
   })
 
   constructor(
