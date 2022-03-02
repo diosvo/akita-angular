@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { AuthState, createInitialState } from '../models/auth.model';
+import { AuthState, initialAuthState } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ import { AuthState, createInitialState } from '../models/auth.model';
 export class AuthStore extends Store<AuthState> {
 
   constructor() {
-    super(createInitialState());
+    super(initialAuthState());
   }
 }
 

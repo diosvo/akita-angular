@@ -4,7 +4,7 @@ export interface AuthState {
   password: string;
 }
 
-export function createInitialState(): AuthState {
+export function initialAuthState(): AuthState {
   return {
     token: '',
     username: '',
