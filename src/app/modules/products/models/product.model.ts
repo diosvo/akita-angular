@@ -16,20 +16,24 @@ export interface Product extends AdditionalData {
   image: string;
 }
 
-export interface ProductState extends EntityState<Product> {
+export interface ProductsState extends EntityState<Product> {
   searchTerm: string;
   filters: {
     limit: number;
     sort: 'desc' | 'asc'
-  }
+  },
+  error: string;
+  loading: boolean;
 }
 
-export function initialProductState(): ProductState {
+export function initialProductsState(): ProductsState {
   return {
     searchTerm: '',
     filters: {
       limit: 10,
       sort: 'desc'
-    }
+    },
+    error: '',
+    loading: false
   }
 }
