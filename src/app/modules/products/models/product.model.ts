@@ -1,4 +1,4 @@
-import { EntityState, ID } from "@datorama/akita";
+import { EntityState, HashMap, ID } from "@datorama/akita";
 
 export type AdditionalData = {
   price: number;
@@ -16,14 +16,17 @@ export interface Product extends AdditionalData {
   image: string;
 }
 
+export interface ProductFilters {
+  limit: number;
+  sort: 'desc' | 'asc'
+}
+
 export interface ProductsState extends EntityState<Product> {
   searchTerm: string;
-  filters: {
-    limit: number;
-    sort: 'desc' | 'asc'
-  },
+  filters: ProductFilters,
   error: string;
   loading: boolean;
+  cacheIds: HashMap<ID>;
 }
 
 export function initialProductsState(): ProductsState {
@@ -34,6 +37,7 @@ export function initialProductsState(): ProductsState {
       sort: 'desc'
     },
     error: '',
-    loading: false
+    loading: false,
+    cacheIds: {}
   }
 }

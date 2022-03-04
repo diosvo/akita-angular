@@ -25,7 +25,7 @@ export class ProductsQuery extends QueryEntity<ProductsState> {
   }
 
   hasProduct(id: ID): void {
-    this.hasEntity(id) && !!this.getEntity(id);
+    this.getValue().cacheIds.hasOwnProperty(id);
   }
 
   selectProduct(id: ID): Observable<Product> {
@@ -33,6 +33,6 @@ export class ProductsQuery extends QueryEntity<ProductsState> {
 
     return product$.pipe(
       filter((product: Product) => !!product)
-    )
+    );
   }
 }
