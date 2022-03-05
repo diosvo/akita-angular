@@ -1,0 +1,15 @@
+<ng-container *ngIf="product$ | async as product; else loading">
+  <h1>{{ product.title }}</h1>
+
+  <select [formControl]="quantity">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+
+  <footer>
+    <button (click)="addToCart(product)">Add to cart</button>
+  </footer>
+</ng-container>
+
+<ng-template #loading> ...loading </ng-template>

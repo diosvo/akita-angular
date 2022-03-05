@@ -24,7 +24,7 @@ export class ProductsService {
 
   byId(id: ID): Observable<Product> {
     return this.http.get<Product>(`${baseUrl}/products/${id}`).pipe(
-      tap((product: Product) => this.store.update(product))
+      tap((product: Product) => this.store.upsert(id, product))
     );
   }
 

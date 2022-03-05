@@ -24,8 +24,8 @@ export class ProductsQuery extends QueryEntity<ProductsState> {
     super(store);
   }
 
-  hasProduct(id: ID): void {
-    this.getValue().cacheIds.hasOwnProperty(id);
+  hasProduct(id: ID): boolean {
+    return this.hasEntity(id) && !!this.getEntity(id);
   }
 
   selectProduct(id: ID): Observable<Product> {
