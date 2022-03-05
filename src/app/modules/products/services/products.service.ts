@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ID } from '@datorama/akita';
 import { Observable, tap } from 'rxjs';
 import { baseUrl } from 'src/app/app.module';
-import { Product, ProductFilters } from '../models/product.model';
+import { initialProductsState, Product, ProductFilters } from '../models/product.model';
 import { ProductsStore } from './products-store.service';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class ProductsService {
     private readonly store: ProductsStore
   ) { }
 
-  all(filters: ProductFilters): Observable<Product[]> {
+  all(filters: ProductFilters = initialProductsState().filters): Observable<Product[]> {
     return this.http.get<Product[]>(`${baseUrl}/products?limit=${filters.limit}&sort=${filters.sort}`).pipe(
       tap((products: Product[]) => this.store.set(products))
     );
@@ -28,12 +28,16 @@ export class ProductsService {
     );
   }
 
-  updateSearchTerm(searchTerm: string): void {
-    this.store.update({ searchTerm });
-    this.invalidCache();
+  updateFilters(filters: ProductFilters): void {
+    this.store.update({ filters });
   }
 
-  private invalidCache(): void {
+  updateSearchTerm(searchTerm: string): void {
+    this.store.update({ searchTerm });
+    this.invalidateCache();
+  }
+
+  invalidateCache(): void {
     this.store.setHasCache(false);
   }
 }

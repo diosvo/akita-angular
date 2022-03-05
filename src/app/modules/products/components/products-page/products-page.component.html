@@ -1,0 +1,14 @@
+<section>
+  <app-filters></app-filters>
+
+  <ng-template #productsList>
+    <app-base-product
+      *ngFor="let product of products$ | async"
+      [product]="product"
+    ></app-base-product>
+  </ng-template>
+
+  <ng-container *ngIf="isLoading$ | async; else productsList">
+    ...loading
+  </ng-container>
+</section>
