@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { Product } from '../../models/product.model';
 import { ProductsQuery } from '../../services/products-query.service';
 import { ProductsService } from '../../services/products.service';
 
@@ -20,6 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   constructor(
+    private readonly cart: CartService,
     private readonly query: ProductsQuery,
     private readonly route: ActivatedRoute,
     private readonly service: ProductsService
@@ -29,5 +32,10 @@ export class ProductDetailsComponent implements OnInit {
     if (this.query.hasProduct(this.productId) === false) {
       this.service.byId(this.productId).subscribe();
     }
+  }
+
+  addToCart(product: Product): void {
+    this.cart.add(product, this.quantity.value);
+    alert('Added to cart');
   }
 }

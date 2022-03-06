@@ -18,12 +18,12 @@ export interface Product extends AdditionalData {
 
 export interface ProductFilters {
   limit: number;
-  sort: 'desc' | 'asc'
+  sort: 'desc' | 'asc';
 }
 
 export interface ProductsState extends EntityState<Product> {
   searchTerm: string;
-  filters: ProductFilters,
+  filters: ProductFilters;
   error: string;
   loading: boolean;
 }
