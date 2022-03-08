@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ID } from '@datorama/akita';
-import { Product } from '../../modules/products/models/product.model';
+import { Product } from '../../products/models/product.model';
 import { CartStore } from './cart-store.service';
 
 export interface CartItem {
@@ -30,7 +30,8 @@ export class CartService {
     this.store.upsert(product.id, {
       title: product.title,
       price: product.price,
-      total: product.price * quantity
+      total: product.price * quantity,
+      quantity
     });
   }
 

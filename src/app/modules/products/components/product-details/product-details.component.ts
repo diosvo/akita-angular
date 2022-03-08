@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from 'src/app/services/cart/cart.service';
+import { CartService } from 'src/app/modules/cart/services/cart.service';
 import { Product } from '../../models/product.model';
 import { ProductsQuery } from '../../services/products-query.service';
 import { ProductsService } from '../../services/products.service';

@@ -6,7 +6,7 @@ import { AuthStore } from './auth-store.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthQueryService extends Query<AuthState> {
+export class AuthQuery extends Query<AuthState> {
 
   isLoggedIn$ = this.select((state: AuthState) => !!state.token);
 

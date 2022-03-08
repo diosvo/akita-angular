@@ -3,12 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'products',
     loadChildren: () => import('./modules/products/products.module').then(({ ProductsModule }) => ProductsModule)
   },
   {
     path: 'login',
     loadChildren: () => import('./auth/components/login/login.module').then(({ LoginModule }) => LoginModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./modules/cart/cart.module').then(({ CartModule }) => CartModule)
+  },
+  {
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 
