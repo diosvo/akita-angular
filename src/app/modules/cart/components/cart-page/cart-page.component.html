@@ -1,4 +1,4 @@
-<ng-container *ngIf="count$ | async; else empty">
+<ng-container *ngIf="count$ | async as count; else empty">
   <table>
     <tr>
       <th>Title</th>
@@ -7,8 +7,8 @@
       <th></th>
     </tr>
 
-    <tr *ngFor="let item of items$ | async">
-      <td>{{ item.title }}</td>
+    <tr *ngFor="let item of count">
+      <td>{{ item.productId }}</td>
       <td>{{ item.quantity }}</td>
       <td>{{ item.total }}$</td>
       <td><button (click)="remove(item.productId)">Remove</button></td>

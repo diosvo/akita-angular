@@ -13,7 +13,7 @@ import { CartService } from '../../services/cart.service';
 export class CartPageComponent {
 
   items$ = this.query.selectAll();
-  count$ = this.query.selectCount();
+  count$ = this.cart.all();
   total$ = this.query.selectTotal$;
 
   constructor(
@@ -34,5 +34,4 @@ export class CartPageComponent {
       this.router.navigateByUrl('login');
     }
   }
-
 }
