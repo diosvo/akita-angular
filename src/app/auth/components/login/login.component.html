@@ -1,14 +1,33 @@
-<h2>Login</h2>
+<div class="container">
+  <h2 class="tui-space_top-0" [style.textAlign]="'center'">Login</h2>
 
-<form [formGroup]="form">
-  <input type="email" formControlName="username" autocomplete="off" />
-  <input type="password" formControlName="password" />
+  <form [formGroup]="form" class="tui-row">
+    <tui-input formControlName="username" class="tui-col_12">
+      Username
+    </tui-input>
 
-  <button type="submit" [disabled]="form.invalid" (click)="onSubmit()">
-    Submit
-  </button>
+    <tui-input-password
+      formControlName="password"
+      class="tui-col_12 tui-space_vertical-4"
+    >
+      Password
+    </tui-input-password>
 
-  <div class="error-message" *ngIf="error$ | async as message">
-    {{ message }}
-  </div>
-</form>
+    <button
+      size="m"
+      tuiButton
+      type="submit"
+      class="tui-col_12"
+      (click)="onSubmit()"
+      [disabled]="form.invalid"
+    >
+      Submit
+    </button>
+
+    <tui-error
+      *ngIf="error$ | async as message"
+      [error]="message"
+      class="tui-space_top-2"
+    ></tui-error>
+  </form>
+</div>
