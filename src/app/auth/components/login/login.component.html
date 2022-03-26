@@ -19,7 +19,8 @@
       type="submit"
       class="tui-col_12"
       (click)="onSubmit()"
-      [disabled]="form.invalid"
+      [showLoader]="loading"
+      [disabled]="form.invalid || loading"
     >
       Submit
     </button>
