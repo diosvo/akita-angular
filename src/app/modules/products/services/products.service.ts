@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ID } from '@datorama/akita';
-import { Observable, tap } from 'rxjs';
+import { finalize, Observable, tap } from 'rxjs';
 import { baseUrl } from 'src/app/app.module';
 import { initialProductsState, Product, ProductFilters } from '../models/product.model';
 import { ProductsStore } from './products-store.service';
@@ -17,8 +17,10 @@ export class ProductsService {
   ) { }
 
   all(filters: ProductFilters = initialProductsState().filters): Observable<Product[]> {
+    this.store.setLoading(true);
     return this.http.get<Product[]>(`${baseUrl}/products?limit=${filters.limit}&sort=${filters.sort}`).pipe(
-      tap((products: Product[]) => this.store.set(products))
+      tap((products: Product[]) => this.store.set(products)),
+      finalize(() => this.store.setLoading(true))
     );
   }
 

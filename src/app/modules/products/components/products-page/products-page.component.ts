@@ -23,11 +23,8 @@ export class ProductsPageComponent implements OnInit {
     this.isLoading$ = this.query.selectLoading();
     this.products$ = this.query.selectAll();
 
-    combineLatest([
-      this.query.selectHasCache(),
-      this.query.selectFilters$
-    ]).pipe(switchMap(([cached, filters]) => {
-      return cached ? EMPTY : this.service.all(filters)
-    })).subscribe();
+    combineLatest([this.query.selectHasCache(), this.query.selectFilters$])
+      .pipe(switchMap(([cached, filters]) => cached ? EMPTY : this.service.all(filters)))
+      .subscribe();
   }
 }
